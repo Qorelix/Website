@@ -37,6 +37,8 @@
   <link rel="stylesheet" href="../assets/css/animations.css">
   <link rel="stylesheet" href="../assets/css/responsive.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,26 +57,16 @@
         {
           "@type": "ContactPoint",
           "contactType": "sales",
-          "email": "contact@qorelix.com",
-          "telephone": "+1-555-000-0000",
+          "email": "binumer614@gmail.com",
           "availableLanguage": "English"
         },
         {
           "@type": "ContactPoint",
           "contactType": "customer support",
-          "email": "support@qorelix.com",
-          "telephone": "+1-555-000-0001",
+          "email": "binumer614@gmail.com",
           "availableLanguage": "English"
         }
       ],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "123 Innovation Drive",
-        "addressLocality": "Tech City",
-        "addressRegion": "TC",
-        "postalCode": "10001",
-        "addressCountry": "US"
-      },
       "sameAs": [
         "https://linkedin.com/company/qorelix",
         "https://twitter.com/qorelix",
@@ -147,7 +139,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="section">
+  <section class="section section-bg-contact">
     <div class="container">
       <div class="contact-grid">
         <!-- Left Column: Contact Info -->
@@ -163,27 +155,27 @@
               </div>
               <div>
                 <h4>Email Us</h4>
-                <p>contact@qorelix.com</p>
+                <p>binumer614@gmail.com</p>
               </div>
             </div>
 
             <div class="contact-info-item">
               <div class="contact-info-icon">
-                <i class="fas fa-phone"></i>
+                <i class="fas fa-headset"></i>
               </div>
               <div>
-                <h4>Call Us</h4>
-                <p>+1 (555) 000-0000</p>
+                <h4>24/7 Support</h4>
+                <p>Round-the-clock assistance — we're here whenever you need us</p>
               </div>
             </div>
 
             <div class="contact-info-item">
               <div class="contact-info-icon">
-                <i class="fas fa-map-marker-alt"></i>
+                <i class="fas fa-globe"></i>
               </div>
               <div>
-                <h4>Office</h4>
-                <p>123 Innovation Drive, Tech City, TC 10001</p>
+                <h4>Worldwide</h4>
+                <p>Serving clients globally across all time zones</p>
               </div>
             </div>
 
@@ -192,8 +184,8 @@
                 <i class="fas fa-clock"></i>
               </div>
               <div>
-                <h4>Business Hours</h4>
-                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <h4>Always Available</h4>
+                <p>24 hours / 7 days a week — no office hours, just results</p>
               </div>
             </div>
 
@@ -214,15 +206,15 @@
           </div>
 
           <div class="about-image" style="margin-top: var(--space-xl);">
-            <i class="fas fa-map-marker-alt"></i>
-            <span style="display: block; margin-top: var(--space-sm); font-weight: 600;">Map Placeholder</span>
-            <span style="display: block; font-size: var(--font-size-sm); color: var(--text-muted);">123 Innovation Drive, Tech City, TC 10001</span>
+            <i class="fas fa-globe-americas"></i>
+            <span style="display: block; margin-top: var(--space-sm); font-weight: 600;">Global Presence</span>
+            <span style="display: block; font-size: var(--font-size-sm); color: var(--text-muted);">Serving clients across North America, Europe, Asia, and beyond</span>
           </div>
         </div>
 
         <!-- Right Column: Contact Form -->
         <div class="contact-form-wrap">
-          <form class="contact-form">
+          <form class="contact-form" id="qorelixContactForm">
             <div class="form-row">
               <div class="form-group">
                 <label for="firstName">First Name <span class="text-red">*</span></label>
@@ -235,32 +227,61 @@
             </div>
 
             <div class="form-group">
-              <label for="email">Email <span class="text-red">*</span></label>
-              <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+              <label for="company">Company Name</label>
+              <input type="text" id="company" name="company" placeholder="Your Company Ltd.">
             </div>
 
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email <span class="text-red">*</span></label>
+                <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="subject">Subject <span class="text-red">*</span></label>
-              <select id="subject" name="subject" required>
-                <option value="" disabled selected>Select a subject</option>
-                <option value="general">General Inquiry</option>
-                <option value="partnership">Partnership</option>
-                <option value="project">Project Proposal</option>
-                <option value="support">Support</option>
-              </select>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="service">Service Required <span class="text-red">*</span></label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Select a service</option>
+                  <option value="software-development">Software Development</option>
+                  <option value="web-development">Web Development</option>
+                  <option value="mobile-apps">Mobile App Development</option>
+                  <option value="ai-ml">AI & Machine Learning</option>
+                  <option value="cloud">Cloud Solutions</option>
+                  <option value="cybersecurity">Cybersecurity</option>
+                  <option value="ui-ux">UI/UX Design</option>
+                  <option value="digital-marketing">Digital Marketing</option>
+                  <option value="bpo">BPO & Call Center</option>
+                  <option value="consulting">IT Consulting</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="budget">Budget Range</label>
+                <select id="budget" name="budget">
+                  <option value="" disabled selected>Select budget</option>
+                  <option value="under-5k">Under $5,000</option>
+                  <option value="5k-15k">$5,000 – $15,000</option>
+                  <option value="15k-50k">$15,000 – $50,000</option>
+                  <option value="50k-100k">$50,000 – $100,000</option>
+                  <option value="over-100k">$100,000+</option>
+                  <option value="not-sure">Not Sure / To Be Discussed</option>
+                </select>
+              </div>
             </div>
 
             <div class="form-group">
               <label for="message">Message <span class="text-red">*</span></label>
-              <textarea id="message" name="message" rows="6" placeholder="Tell us about your project, question, or how we can help..." required></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, question, or how we can help..." required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <div class="form-status" id="formStatus" style="display: none;"></div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" id="formSubmitBtn">
               Send Message <i class="fas fa-paper-plane"></i>
             </button>
           </form>
@@ -270,7 +291,7 @@
   </section>
 
   <!-- FAQ Section -->
-  <section class="section section-alt">
+  <section class="section section-alt section-bg-faq">
     <div class="container">
       <div class="section-header">
         <span class="section-label">FAQ</span>
@@ -285,7 +306,7 @@
             <i class="fas fa-chevron-down"></i>
           </button>
           <div class="accordion-content">
-            <p>You can reach us through the contact form on this page, email us directly at contact@qorelix.com, or call us at +1 (555) 000-0000. For the fastest response, we recommend filling out the contact form with details about your project or inquiry.</p>
+            <p>You can reach us through the contact form on this page or email us directly at binumer614@gmail.com. For the fastest response, we recommend filling out the contact form with details about your project or inquiry. Our team typically responds within 24 hours.</p>
           </div>
         </div>
 
@@ -427,5 +448,75 @@
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/components.js"></script>
   <script src="../assets/js/animations.js"></script>
+
+  <script>
+  (function() {
+    const form = document.getElementById('qorelixContactForm');
+    const status = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('formSubmitBtn');
+
+    if (!form) return;
+
+    emailjs.init('YOUR_PUBLIC_KEY');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const firstName = form.firstName.value.trim();
+      const lastName = form.lastName.value.trim();
+      const email = form.email.value.trim();
+      const service = form.service.value;
+      const message = form.message.value.trim();
+
+      if (!firstName || !lastName || !email || !service || !message) {
+        showStatus('Please fill in all required fields.', 'error');
+        return;
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        showStatus('Please enter a valid email address.', 'error');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+      showStatus('', '');
+
+      const templateParams = {
+        from_name: firstName + ' ' + lastName,
+        from_email: email,
+        company: form.company.value.trim() || 'N/A',
+        phone: form.phone.value.trim() || 'N/A',
+        service: form.service.options[form.service.selectedIndex]?.text || 'N/A',
+        budget: form.budget.options[form.budget.selectedIndex]?.text || 'N/A',
+        message: message,
+        to_email: 'binumer614@gmail.com'
+      };
+
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function() {
+          showStatus('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.', 'success');
+          form.reset();
+        })
+        .catch(function(err) {
+          showStatus('Something went wrong. Please try again or email us directly at binumer614@gmail.com.', 'error');
+          console.error('EmailJS error:', err);
+        })
+        .finally(function() {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+        });
+    });
+
+    function showStatus(msg, type) {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = 'form-status';
+      if (type) status.classList.add('form-status--' + type);
+      status.style.display = msg ? 'block' : 'none';
+    }
+  })();
+  </script>
 </body>
 </html>
