@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initAccordions();
   initBlogSearch();
-  initContactForm();
   initCounterAnimation();
   initMouseFollower();
   initHeroGlow();
@@ -154,34 +153,6 @@ function initBlogSearch() {
       card.style.display = match ? '' : 'none';
       card.style.opacity = match ? '1' : '0';
     });
-  });
-}
-
-/* --- Contact Form --- */
-function initContactForm() {
-  const form = document.querySelector('.contact-form');
-  if (!form) return;
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    if (!btn) return;
-
-    const orig = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    btn.disabled = true;
-
-    setTimeout(() => {
-      btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-      btn.style.cssText += 'background:#22C55E;border-color:#22C55E';
-      setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.style.background = '';
-        btn.style.borderColor = '';
-        btn.disabled = false;
-        form.reset();
-      }, 3000);
-    }, 1500);
   });
 }
 
