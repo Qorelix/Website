@@ -574,7 +574,7 @@ p {
 }
 
 .loader-logo {
-  width: 80px;
+  width: 120px;
   height: auto;
 }
 
@@ -669,14 +669,14 @@ p {
 }
 
 .nav-logo img {
-  height: 32px;
+  height: 48px;
   width: auto;
   display: block;
   transition: height var(--transition-base);
 }
 
 .nav.scrolled .nav-logo img {
-  height: 28px;
+  height: 40px;
 }
 
 .nav-logo span {
@@ -1872,7 +1872,7 @@ p {
 }
 
 .footer-brand img {
-  height: 36px;
+  height: 54px;
   width: auto;
 }
 
