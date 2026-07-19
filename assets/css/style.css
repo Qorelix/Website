@@ -294,8 +294,13 @@ body {
               radial-gradient(ellipse at 50% 70%, rgba(230, 0, 0, 0.04) 0%, transparent 50%);
 }
 
+.section-bg-values::before {
+  background: radial-gradient(ellipse at 30% 40%, rgba(230, 0, 0, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 60%, rgba(230, 0, 0, 0.03) 0%, transparent 40%);
+}
+
 .section-bg-trusted::before {
-  background: radial-gradient(ellipse at 80% 20%, rgba(230, 0, 0, 0.04) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(230, 0, 0, 0.05) 0%, transparent 50%);
 }
 
 .section-bg-stats::before {
@@ -2267,12 +2272,26 @@ p {
   border-radius: var(--radius-xl);
   padding: var(--space-2xl);
   border: 1px solid var(--color-border);
-  transition: all var(--transition-base);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
 }
 
 .service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background: radial-gradient(circle at 20% 30%, var(--color-primary) 0%, transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(0, 100, 255, 0.5) 0%, transparent 50%);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.service-card::after {
   content: '';
   position: absolute;
   top: 0;
@@ -2285,23 +2304,18 @@ p {
   transition: transform var(--transition-slow);
 }
 
-.service-card:hover::before {
+.service-card:hover::after {
   transform: scaleX(1);
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(230, 0, 0, 0.2);
-  box-shadow: var(--shadow-xl), 0 0 30px rgba(230, 0, 0, 0.08);
+  transform: translateY(-8px);
+  border-color: rgba(230, 0, 0, 0.3);
+  box-shadow: var(--shadow-xl), 0 0 30px rgba(230, 0, 0, 0.12);
 }
 
-.service-card-icon {
-  transition: transform var(--transition-base), background var(--transition-base);
-}
-
-.service-card:hover .service-card-icon {
-  transform: scale(1.1) rotate(-5deg);
-  background: rgba(230, 0, 0, 0.15);
+.service-card:hover::before {
+  opacity: 0.12;
 }
 
 .service-card-icon {
@@ -2315,6 +2329,72 @@ p {
   margin-bottom: var(--space-lg);
   font-size: var(--font-size-2xl);
   color: var(--color-primary);
+  transition: transform 0.4s ease, background 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card:hover .service-card-icon {
+  transform: scale(1.1) rotate(-5deg);
+  background: rgba(230, 0, 0, 0.2);
+}
+
+.service-card .card-title,
+.service-card .card-text,
+.service-card .card-link {
+  position: relative;
+  z-index: 1;
+}
+
+.service-card .card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: gap 0.3s ease;
+}
+
+.service-card .card-link i {
+  font-size: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .card-link {
+  gap: var(--space-md);
+}
+
+.service-card:hover .card-link i {
+  transform: translateX(4px);
+}
+
+/* Service card nth-child background variations */
+.service-card:nth-child(2)::before {
+  background: radial-gradient(circle at 70% 20%, var(--color-primary) 0%, transparent 55%),
+              radial-gradient(circle at 20% 80%, rgba(100, 0, 255, 0.5) 0%, transparent 45%);
+}
+
+.service-card:nth-child(3)::before {
+  background: radial-gradient(circle at 30% 60%, var(--color-primary) 0%, transparent 50%),
+              radial-gradient(circle at 80% 30%, rgba(0, 200, 255, 0.5) 0%, transparent 40%);
+}
+
+.service-card:nth-child(4)::before {
+  background: radial-gradient(circle at 60% 40%, var(--color-primary) 0%, transparent 55%),
+              radial-gradient(circle at 30% 10%, rgba(255, 100, 0, 0.5) 0%, transparent 35%);
+}
+
+.service-card:nth-child(5)::before {
+  background: radial-gradient(circle at 40% 70%, var(--color-primary) 0%, transparent 50%),
+              radial-gradient(circle at 70% 10%, rgba(200, 0, 255, 0.5) 0%, transparent 40%);
+}
+
+.service-card:nth-child(6)::before {
+  background: radial-gradient(circle at 50% 30%, var(--color-primary) 0%, transparent 60%),
+              radial-gradient(circle at 80% 80%, rgba(0, 100, 200, 0.5) 0%, transparent 40%);
 }
 
 /* --- Industries --- */
@@ -2359,6 +2439,41 @@ p {
 
 .value-card {
   padding: var(--space-2xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-card);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(230, 0, 0, 0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(230, 0, 0, 0.2);
+  box-shadow: 0 0 25px rgba(230, 0, 0, 0.1), var(--shadow-xl);
+}
+
+.value-card:hover::before {
+  opacity: 1;
+}
+
+.value-card .card-icon {
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.value-card:hover .card-icon {
+  transform: scale(1.1) rotate(-5deg);
+  background: rgba(230, 0, 0, 0.18);
 }
 
 .value-number {
@@ -2819,6 +2934,97 @@ select:focus-visible {
   transform: scale(0.95);
 }
 
+/* --- How We Work / Workflow --- */
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.workflow-step {
+  text-align: center;
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(0);
+}
+
+.workflow-step:hover {
+  transform: translateY(-6px);
+  border-color: rgba(230, 0, 0, 0.25);
+  box-shadow: 0 0 25px rgba(230, 0, 0, 0.1), var(--shadow-lg);
+}
+
+.workflow-step-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(230, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.workflow-step:hover .workflow-step-icon {
+  transform: scale(1.1) rotate(-5deg);
+  background: rgba(230, 0, 0, 0.18);
+}
+
+.workflow-step-num {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dim);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-sm);
+}
+
+.workflow-step-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.workflow-step-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.workflow-connector {
+  display: none;
+}
+
+/* Workflow responsive: 2x2 on tablet, 1 column on mobile */
+@media (max-width: 1024px) {
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 640px) {
+  .workflow-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .workflow-step {
+    padding: var(--space-lg);
+  }
+}
+
 /* --- Company Leadership --- */
 .leadership-section {
   position: relative;
@@ -2844,53 +3050,34 @@ select:focus-visible {
 }
 
 .leadership-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(230, 0, 0, 0.4);
-  box-shadow: 0 0 30px rgba(230, 0, 0, 0.12), 0 20px 50px rgba(0, 0, 0, 0.5);
+  transform: translateY(-10px);
+  border-color: rgba(230, 0, 0, 0.5);
+  box-shadow: 0 0 40px rgba(230, 0, 0, 0.2), 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
-.leadership-card-glass {
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.leadership-card-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.leadership-card-image {
+.leadership-card-visual {
   position: relative;
   width: 100%;
-  height: 320px;
+  height: 340px;
   overflow: hidden;
   background: var(--color-bg-alt);
 }
 
-.leadership-card-image img {
+.leadership-card-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.leadership-card:hover .leadership-card-image img {
-  transform: scale(1.08);
+.leadership-card:hover .leadership-card-visual img {
+  transform: scale(1.05);
 }
 
 .leadership-card-placeholder {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg-card) 100%);
@@ -2898,16 +3085,15 @@ select:focus-visible {
 }
 
 .leadership-card:hover .leadership-card-placeholder {
-  background: linear-gradient(135deg, rgba(230, 0, 0, 0.08) 0%, var(--color-bg-card) 100%);
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.1) 0%, var(--color-bg-card) 100%);
 }
 
 .leadership-card-initials {
-  font-size: var(--font-size-6xl);
+  font-size: var(--font-size-7xl);
   font-weight: var(--font-weight-extrabold);
   color: var(--color-text-muted);
   letter-spacing: var(--letter-spacing-tight);
   line-height: 1;
-  margin-bottom: var(--space-md);
   transition: color 0.4s ease, transform 0.4s ease;
 }
 
@@ -2916,82 +3102,74 @@ select:focus-visible {
   transform: scale(1.05);
 }
 
-.leadership-card-placeholder-text {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-dim);
-  letter-spacing: var(--letter-spacing-wide);
-  text-transform: uppercase;
-}
-
-.leadership-card-overlay {
+.leadership-card-hover {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
-  pointer-events: none;
-  transition: background 0.4s ease;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl);
+  transition: background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
 }
 
-.leadership-card:hover .leadership-card-overlay {
-  background: linear-gradient(180deg, rgba(230, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.85) 100%);
+.leadership-card:hover .leadership-card-hover {
+  background: rgba(0, 0, 0, 0.85);
+  opacity: 1;
 }
 
-.leadership-card-content {
-  padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
+.leadership-card-hover-content {
   text-align: center;
-  position: relative;
-  z-index: 2;
-  margin-top: -40px;
-  background: linear-gradient(180deg, transparent 0%, var(--color-bg-card) 30%);
+  transform: translateY(10px);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.leadership-card:hover .leadership-card-hover-content {
+  transform: translateY(0);
+}
+
+.leadership-card-hover-role {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.leadership-card-hover-name {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.leadership-card-hover-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.leadership-card-meta {
+  padding: var(--space-lg) var(--space-xl);
+  text-align: center;
+  background: var(--color-bg-card);
 }
 
 .leadership-card-name {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-extrabold);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
   margin-bottom: var(--space-xs);
-  transition: transform 0.4s ease;
-}
-
-.leadership-card:hover .leadership-card-name {
-  transform: translateY(-2px);
 }
 
 .leadership-card-role {
   font-size: var(--font-size-sm);
-  color: var(--color-primary);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--space-md);
-  opacity: 0.9;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.leadership-card:hover .leadership-card-role {
-  opacity: 1;
-}
-
-.leadership-card-desc {
-  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
-  line-height: var(--line-height-relaxed);
-  max-width: 400px;
-  margin: 0 auto;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.4s ease, max-height 0.4s ease, margin 0.4s ease;
-}
-
-.leadership-card:hover .leadership-card-desc {
-  opacity: 1;
-  max-height: 100px;
-  margin-top: var(--space-md);
-}
-
-.leadership-card-equity {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-dim);
-  margin-top: var(--space-sm);
-  letter-spacing: var(--letter-spacing-wide);
-  text-transform: uppercase;
+  font-weight: var(--font-weight-medium);
 }
 
 .leadership-description {

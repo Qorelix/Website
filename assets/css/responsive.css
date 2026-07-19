@@ -798,40 +798,34 @@
     max-width: 480px;
   }
 
-  .leadership-card-image {
+  .leadership-card-visual {
     height: 260px;
-  }
-
-  .leadership-card-content {
-    padding: var(--space-lg) var(--space-xl) var(--space-xl);
-  }
-
-  .leadership-card-name {
-    font-size: var(--font-size-xl);
-  }
-
-  .leadership-card-description {
-    font-size: var(--font-size-base);
   }
 
   .leadership-card-initials {
     font-size: var(--font-size-5xl);
   }
 
-  .leadership-card-desc {
-    opacity: 1;
-    max-height: 100px;
-    margin-top: var(--space-md);
+  .leadership-card-hover-name {
+    font-size: var(--font-size-xl);
+  }
+
+  .leadership-card-hover {
+    padding: var(--space-lg);
+  }
+
+  .leadership-card-hover-desc {
+    font-size: var(--font-size-xs);
   }
 }
 
 @media (max-width: 480px) {
-  .leadership-card-image {
+  .leadership-card-visual {
     height: 220px;
   }
 
-  .leadership-card-name {
-    font-size: var(--font-size-lg);
+  .leadership-card-initials {
+    font-size: var(--font-size-4xl);
   }
 }
 
