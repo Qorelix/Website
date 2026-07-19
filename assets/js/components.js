@@ -37,7 +37,6 @@ function initClientsMarquee() {
   const marquee = document.querySelector('.marquee-content');
   if (!marquee) return;
 
-  // Clone content for seamless loop
   const clone = marquee.cloneNode(true);
   marquee.parentElement.appendChild(clone);
 }
@@ -60,7 +59,6 @@ function initSmoothScrollLenis() {
 
   requestAnimationFrame(raf);
 
-  // Connect GSAP ScrollTrigger with Lenis
   if (typeof ScrollTrigger !== 'undefined') {
     lenis.on('scroll', ScrollTrigger.update);
   }
@@ -78,7 +76,6 @@ function initScrollRevealFallback() {
     return;
   }
 
-  // Fallback: Intersection Observer for reveal elements
   const revealElements = document.querySelectorAll('[data-aos]');
   if (!revealElements.length) return;
 
@@ -121,16 +118,12 @@ function initNavBehavior() {
     }
   }, { passive: true });
 
-  // Always show nav when at top
   window.addEventListener('scroll', () => {
     if (window.pageYOffset < 50) {
       nav.style.transform = 'translateY(0)';
     }
   }, { passive: true });
 }
-
-// Note: Nav hide/show on scroll is disabled by default for stability.
-// Uncomment initNavBehavior() in the DOMContentLoaded below to enable.
 
 /* --- Services Carousel --- */
 function initServicesCarousel() {
@@ -166,12 +159,9 @@ function initServicesCarousel() {
 
 /* --- Initialize Components --- */
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize components that may depend on external libraries
-  setTimeout(() => {
-    initTestimonialsCarousel();
-    initServicesCarousel();
-    initClientsMarquee();
-    initSmoothScrollLenis();
-    initScrollRevealFallback();
-  }, 1000);
+  initTestimonialsCarousel();
+  initServicesCarousel();
+  initClientsMarquee();
+  initSmoothScrollLenis();
+  initScrollRevealFallback();
 });

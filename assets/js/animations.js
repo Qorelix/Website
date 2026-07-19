@@ -4,6 +4,51 @@
 
 'use strict';
 
+/* --- CSS Reveal Animations (no GSAP dependency) --- */
+function initCSSReveals() {
+  const revealTypes = [
+    '.reveal', '.reveal-left', '.reveal-right', '.reveal-scale',
+    '.slide-up', '.fade-in', '.scale-in', '.stagger-children', '.line-draw'
+  ];
+
+  const elements = document.querySelectorAll(revealTypes.join(','));
+  if (!elements.length) return;
+
+  // Immediately show elements already in viewport
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('visible');
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  elements.forEach(el => {
+    if (!el.classList.contains('visible')) {
+      observer.observe(el);
+    }
+  });
+}
+
+/* --- Safety fallback: show all reveal elements after 4s --- */
+function initRevealFallback() {
+  const selectors = [
+    '.reveal', '.reveal-left', '.reveal-right', '.reveal-scale',
+    '.slide-up', '.fade-in', '.scale-in', '.stagger-children', '.line-draw'
+  ].join(',');
+  setTimeout(() => {
+    document.querySelectorAll(selectors).forEach(el => el.classList.add('visible'));
+  }, 4000);
+}
+
 function initGSAPAnimations() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     setTimeout(initGSAPAnimations, 500);
@@ -12,10 +57,8 @@ function initGSAPAnimations() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Default config: faster, smoother
   gsap.config({ nullTargetWarn: false });
 
-  // Easing presets
   const ease = { out: 'power4.out', inOut: 'power2.inOut' };
 
   /* --- Hero Entrance --- */
@@ -40,25 +83,6 @@ function initGSAPAnimations() {
       opacity: 0, y: 20, duration: 0.5, stagger: 0.1, ease: 'back.out(2)'
     }, '-=0.3')
     .from('.hero-scroll-indicator', { opacity: 0, duration: 0.6, ease: ease.out }, '-=0.2');
-
-  /* --- CSS Reveal Classes (using IntersectionObserver for performance) --- */
-  const revealTypes = [
-    '.reveal', '.reveal-left', '.reveal-right', '.reveal-scale',
-    '.slide-up', '.fade-in', '.scale-in', '.stagger-children', '.line-draw'
-  ];
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll(revealTypes.join(',')).forEach(el => {
-    revealObserver.observe(el);
-  });
 
   /* --- Section Header Titles (GSAP for smoother animation) --- */
   document.querySelectorAll('.section-header').forEach(header => {
@@ -117,7 +141,7 @@ function initGSAPAnimations() {
     });
   });
 
-  /* --- Hero Particles (reduced count for performance) --- */
+  /* --- Hero Particles --- */
   const heroParticles = document.querySelector('.hero-particles');
   if (heroParticles) {
     const count = Math.min(15, Math.floor(window.innerWidth / 80));
@@ -158,7 +182,7 @@ function initGSAPAnimations() {
     });
   });
 
-  /* --- Parallax (optimized with scrub) --- */
+  /* --- Parallax --- */
   document.querySelectorAll('.parallax-section').forEach(section => {
     const bg = section.querySelector('.parallax-bg');
     if (!bg) return;
@@ -175,6 +199,9 @@ function initGSAPAnimations() {
 
 /* --- Initialize --- */
 document.addEventListener('DOMContentLoaded', () => {
+  initCSSReveals();
+  initRevealFallback();
+
   if (typeof gsap !== 'undefined') {
     initGSAPAnimations();
   } else {

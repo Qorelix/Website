@@ -26,7 +26,7 @@ function initLoader() {
     document.body.style.overflow = '';
   };
 
-  window.addEventListener('load', () => setTimeout(hide, 600), { once: true });
+  window.addEventListener('load', hide, { once: true });
   setTimeout(hide, 3000);
 }
 

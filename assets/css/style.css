@@ -3063,6 +3063,7 @@ select:focus-visible {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(1.08) contrast(1.04);
 }
 
 .leadership-card:hover .leadership-card-visual img {
@@ -3111,7 +3112,7 @@ select:focus-visible {
 }
 
 .leadership-card:hover .leadership-card-hover {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.35);
   opacity: 1;
   pointer-events: auto;
 }
