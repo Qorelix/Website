@@ -133,14 +133,9 @@ body {
   min-height: 100vh;
 }
 
-/* Performance: content-visibility for below-fold sections */
-.section-alt,
-.section:nth-child(n+3),
-.cta-section,
-.footer {
-  content-visibility: auto;
-  contain-intrinsic-size: 500px;
-}
+/* Content visibility intentionally removed — conflicted with GSAP ScrollTrigger
+   causing sections to render at wrong opacity/position. Sections are few enough
+   that the performance trade-off is not worthwhile. */
 
 /* --- Premium Background Effects --- */
 
@@ -3112,11 +3107,13 @@ select:focus-visible {
   padding: var(--space-2xl);
   transition: background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 0;
+  pointer-events: none;
 }
 
 .leadership-card:hover .leadership-card-hover {
   background: rgba(0, 0, 0, 0.85);
   opacity: 1;
+  pointer-events: auto;
 }
 
 .leadership-card-hover-content {
