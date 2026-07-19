@@ -80,7 +80,7 @@ function initGSAPAnimations() {
   /* --- Card Stagger --- */
   const cardGrids = [
     '.services-grid', '.why-grid', '.values-grid', '.benefits-grid',
-    '.industries-grid', '.team-grid', '.grid-2', '.grid-3', '.grid-4', '.grid-auto'
+    '.industries-grid', '.team-grid', '.leadership-grid', '.grid-2', '.grid-3', '.grid-4', '.grid-auto'
   ].join(',');
 
   document.querySelectorAll(cardGrids).forEach(grid => {

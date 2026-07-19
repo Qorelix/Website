@@ -218,7 +218,7 @@ function initMouseFollower() {
   };
   animate();
 
-  document.querySelectorAll('a,button,.card,.btn,.service-card,.industry-card,.portfolio-card,.blog-card')
+  document.querySelectorAll('a,button,.card,.btn,.service-card,.services-slide,.leadership-card,.industry-card,.portfolio-card,.blog-card')
     .forEach(el => {
       el.addEventListener('mouseenter', () => follower.classList.add('hover'));
       el.addEventListener('mouseleave', () => follower.classList.remove('hover'));

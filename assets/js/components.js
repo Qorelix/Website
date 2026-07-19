@@ -132,11 +132,44 @@ function initNavBehavior() {
 // Note: Nav hide/show on scroll is disabled by default for stability.
 // Uncomment initNavBehavior() in the DOMContentLoaded below to enable.
 
+/* --- Services Carousel --- */
+function initServicesCarousel() {
+  const container = document.querySelector('.services-carousel');
+  if (!container || typeof Swiper === 'undefined') return;
+
+  const swiper = new Swiper(container, {
+    slidesPerView: 'auto',
+    spaceBetween: 24,
+    loop: true,
+    speed: 600,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    mousewheel: {
+      forceToAxis: true,
+    },
+    navigation: {
+      nextEl: '.services-carousel-next',
+      prevEl: '.services-carousel-prev',
+    },
+    breakpoints: {
+      320: { spaceBetween: 12 },
+      640: { spaceBetween: 16 },
+      1024: { spaceBetween: 24 },
+    },
+  });
+
+  container.swiper = swiper;
+}
+
 /* --- Initialize Components --- */
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize components that may depend on external libraries
   setTimeout(() => {
     initTestimonialsCarousel();
+    initServicesCarousel();
     initClientsMarquee();
     initSmoothScrollLenis();
     initScrollRevealFallback();
