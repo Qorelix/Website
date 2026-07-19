@@ -829,40 +829,14 @@
   }
 }
 
-/* --- Services Carousel Responsive --- */
+/* --- Services Grid Responsive --- */
 @media (max-width: 768px) {
-  .services-carousel-wrapper {
-    padding: 0 var(--space-md);
-  }
-
-  .services-slide {
-    height: 340px;
-    width: 280px;
-  }
-
   .services-slide-body {
     padding: var(--space-lg);
   }
 
   .services-slide-title {
     font-size: var(--font-size-lg);
-  }
-}
-
-@media (max-width: 480px) {
-  .services-slide {
-    height: 300px;
-    width: 260px;
-  }
-
-  .services-carousel-nav {
-    gap: var(--space-sm);
-  }
-
-  .services-carousel-btn {
-    width: 40px;
-    height: 40px;
-    font-size: var(--font-size-base);
   }
 }
 

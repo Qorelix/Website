@@ -2747,14 +2747,10 @@ select:focus-visible {
 .overflow-hidden { overflow: hidden; }
 
 /* --- Services Carousel --- */
-.services-carousel-wrapper {
-  width: 100%;
-  overflow: hidden;
-  padding: 0 var(--gutter);
-}
-
-.services-carousel {
-  overflow: visible;
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
   padding: var(--space-xl) 0;
 }
 
@@ -2896,39 +2892,6 @@ select:focus-visible {
   transform: translateX(4px);
 }
 
-.services-carousel-nav {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
-}
-
-.services-carousel-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  font-size: var(--font-size-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-base);
-}
-
-.services-carousel-btn:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #fff;
-  box-shadow: var(--shadow-glow);
-}
-
-.services-carousel-btn:active {
-  transform: scale(0.95);
-}
-
 /* --- How We Work / Workflow --- */
 .workflow-grid {
   display: grid;
@@ -3001,22 +2964,18 @@ select:focus-visible {
   display: none;
 }
 
-/* Workflow responsive: 2x2 on tablet, 1 column on mobile */
+/* Services grid responsive */
 @media (max-width: 1024px) {
-  .workflow-grid {
+  .services-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
   }
 }
 
 @media (max-width: 640px) {
-  .workflow-grid {
+  .services-grid {
     grid-template-columns: 1fr;
     gap: var(--space-md);
-  }
-
-  .workflow-step {
-    padding: var(--space-lg);
   }
 }
 
