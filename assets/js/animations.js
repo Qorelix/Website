@@ -202,15 +202,16 @@ document.addEventListener('DOMContentLoaded', () => {
   initCSSReveals();
   initRevealFallback();
 
-  if (typeof gsap !== 'undefined') {
-    initGSAPAnimations();
-  } else {
-    const check = setInterval(() => {
-      if (typeof gsap !== 'undefined') {
-        clearInterval(check);
-        initGSAPAnimations();
-      }
-    }, 100);
-    setTimeout(() => clearInterval(check), 8000);
-  }
+  // TEMP: Skiping GSAP for testing
+  // if (typeof gsap !== 'undefined') {
+  //   initGSAPAnimations();
+  // } else {
+  //   const check = setInterval(() => {
+  //     if (typeof gsap !== 'undefined') {
+  //       clearInterval(check);
+  //       initGSAPAnimations();
+  //     }
+  //   }, 100);
+  //   setTimeout(() => clearInterval(check), 8000);
+  // }
 });

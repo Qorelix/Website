@@ -129,6 +129,7 @@ function initNavBehavior() {
 document.addEventListener('DOMContentLoaded', () => {
   initTestimonialsCarousel();
   initClientsMarquee();
-  initSmoothScrollLenis();
-  initScrollRevealFallback();
+  // TEMP: Skiping Lenis and AOS for testing
+  // initSmoothScrollLenis();
+  // initScrollRevealFallback();
 });
